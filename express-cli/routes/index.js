@@ -208,7 +208,7 @@ router.get('/tmessage', async function (req, res, next) {
         userID
       }], function (error, results, fields) {
         if (error) throw error;
-        results[0].Tname = Tname;
+        results[0].userName = Tname;
         resolve(results);
       });
     });
