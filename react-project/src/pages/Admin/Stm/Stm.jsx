@@ -77,7 +77,7 @@ export default class Tmessage extends React.Component {
         this.data2 = [];
         let y = this.refs.i1.input.value.trim();
         if (y) {
-            axios.get(`http://localhost:8888/stm?userID=${y}`).then(({ data }) => {
+            axios.get(`http://localhost:8080/stm?userID=${y}`).then(({ data }) => {
                 if (data == 0) {
                     message.warning('此学号不存在');
                     return;
@@ -104,6 +104,7 @@ export default class Tmessage extends React.Component {
                 index1++;
             }
             this.data1.unshift(this.data1[5]);
+            this.data1.pop();
             this.data1.pop();
 
 

@@ -29,7 +29,7 @@ export default class Tacomment extends React.Component {
     componentWillMount() {
         var teacherID = sessionStorage.getItem("userID");
         let _ = this;
-        axios.get(`http://localhost:8888/tcomment?teacherID=${teacherID}&id=2`).then(({ data }) => {
+        axios.get(`http://localhost:8080/tcomment?teacherID=${teacherID}&id=2`).then(({ data }) => {
             _.setState({ data });
         });
     }

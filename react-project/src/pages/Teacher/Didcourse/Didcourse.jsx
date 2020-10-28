@@ -51,7 +51,7 @@ export default class Didcourse extends React.Component {
             item.align = 'center'
         })
         var userID = sessionStorage.getItem("userID");
-        axios.get(`http://localhost:8888/tcourse?teacherID=${userID}`).then(({ data }) => {
+        axios.get(`http://localhost:8080/tcourse?teacherID=${userID}`).then(({ data }) => {
             let arr = data.map(function (item, index) {
                 item.key = `${index + 1}`;
                 return item;

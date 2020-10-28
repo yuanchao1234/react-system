@@ -19,11 +19,11 @@ export default class Tscore extends React.Component {
         let courseType = this.refs.i7.input.value;
         let score = this.refs.i8.input.value;
         if (userName && teacherID && courseName && courseTime && classRoom && courseWeek && courseType && score) {
-            axios.get(`http://localhost:8888/acourse?userName=${userName}&teacherID=${teacherID}&courseName=${courseName}&courseTime=${courseTime}&classRoom=${classRoom}&courseWeek=${courseWeek}&courseType=${courseType}&score=${score}`).then(({ data }) => {
+            axios.get(`http://localhost:8080/acourse?userName=${userName}&teacherID=${teacherID}&courseName=${courseName}&courseTime=${courseTime}&classRoom=${classRoom}&courseWeek=${courseWeek}&courseType=${courseType}&score=${score}`).then(({ data }) => {
                 if (data * 1) {
                     message.success('添加成功');
                 } else {
-                    message.warning('添加失败，工号不存在，或者工号与教师姓名不匹配');
+                    message.warning('添加失败，工号不存在');
                 }
             });
         } else {

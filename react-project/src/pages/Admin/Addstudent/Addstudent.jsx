@@ -28,7 +28,7 @@ export default class addstudent extends React.Component {
         let college = this.refs.i6.input.value;
         // console.log(userName, userID, sex, birthyear, grade, college);
 
-        axios.get(`http://localhost:8888/axuehao?userName=${userName}&userID=${userID}&sex=${sex}&birthyear=${birthyear}&grade=${grade}&college=${college}`).then(({ data }) => {
+        axios.get(`http://localhost:8080/axuehao?userName=${userName}&userID=${userID}&sex=${sex}&birthyear=${birthyear}&grade=${grade}&college=${college}`).then(({ data }) => {
             if (data * 1) {
                 message.warning('此学号已存在');
             } else {

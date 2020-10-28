@@ -49,7 +49,7 @@ export default class Didcourse extends React.Component {
         })
         let _ = this;
         var userID = sessionStorage.getItem("userID");
-        axios.get(`http://localhost:8888/score?studentID=${userID}`).then(({ data }) => {
+        axios.get(`http://localhost:8080/score?studentID=${userID}`).then(({ data }) => {
             let arr = data.map(function (item, index) {
                 item.key = `${index + 1}`;
                 return item;

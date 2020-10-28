@@ -51,7 +51,7 @@ export default class Tscore extends React.Component {
     data = [];
     componentWillMount() {
         let userID = sessionStorage.getItem("userID");
-        axios.get(`http://localhost:8888/tscore?teacherID=${userID}&panduan=1`).then(({ data }) => {
+        axios.get(`http://localhost:8080/tscore?teacherID=${userID}&panduan=1`).then(({ data }) => {
             let arr = data.map(function (item, index) {
                 item.key = `${index + 1}`;
                 return item;

@@ -4,6 +4,7 @@ import {
     HashRouter as Router,
     Switch,
     Route,
+    withRouter,
     Link
 } from "react-router-dom";
 import { Dropdown, Button } from 'antd';
@@ -15,9 +16,12 @@ import Stm from '../../pages/Admin/Stm/Stm';
 import Addcourse from '../../pages/Admin/Addcourse/Addcourse';
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
-export default class Alayout extends React.Component {
+class Admin extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            selectedKeys: []
+        }
     }
     componentWillMount() {
         var role = sessionStorage.getItem("role");
@@ -47,6 +51,17 @@ export default class Alayout extends React.Component {
             </Menu.Item>
         </Menu>
     );
+    setSelectedKeys = (value) => {
+        this.setState({
+            selectedKeys: value.keyPath
+        })
+    }
+    componentDidMount() {
+        let path = this.props.history.location.pathname
+        this.setState({
+            selectedKeys: path
+        })
+    }
     render() {
         return (
             <Router>
@@ -74,17 +89,17 @@ export default class Alayout extends React.Component {
                             <Sider width={200} style={{ background: '#fff' }}>
                                 <Menu
                                     mode="inline"
-                                    defaultSelectedKeys={['1']}
-                                    defaultOpenKeys={['sub1']}
                                     style={{ height: '100%' }}
+                                    selectedKeys={this.state.selectedKeys}
+                                    onClick={this.setSelectedKeys}
                                 >
-                                    <Menu.Item key="1"><Link to="/admin/addstudent">添加学生</Link></Menu.Item>
-                                    <Menu.Item key="2"><Link to="/admin/addteacher">添加教工</Link></Menu.Item>
-                                    <Menu.Item key="7"><Link to="/admin/addcourse">给教师添加课程</Link></Menu.Item>
-                                    <Menu.Item key="3"><Link to="/admin/apassword">修改密码</Link></Menu.Item>
-                                    <Menu.Item key="5"><Link to="/admin/atm">教师信息</Link></Menu.Item>
-                                    <Menu.Item key="6"><Link to="/admin/stm">学生信息</Link></Menu.Item>
-                                    <Menu.Item key="8"><Link to="/admin/score">成绩查询</Link></Menu.Item>
+                                    <Menu.Item key="/admin/addstudent"><Link to="/admin/addstudent">添加学生</Link></Menu.Item>
+                                    <Menu.Item key="/admin/addteacher"><Link to="/admin/addteacher">添加教工</Link></Menu.Item>
+                                    <Menu.Item key="/admin/addcourse"><Link to="/admin/addcourse">给教师添加课程</Link></Menu.Item>
+                                    <Menu.Item key="/admin/apassword"><Link to="/admin/apassword">修改密码</Link></Menu.Item>
+                                    <Menu.Item key="/admin/atm"><Link to="/admin/atm">教师信息</Link></Menu.Item>
+                                    <Menu.Item key="/admin/stm"><Link to="/admin/stm">学生信息</Link></Menu.Item>
+                                    <Menu.Item key="/admin/score"><Link to="/admin/score">成绩查询</Link></Menu.Item>
                                     <Menu.Item key="9"></Menu.Item>
                                     <Menu.Item key="10"></Menu.Item>
                                     <Menu.Item key="11"></Menu.Item>
@@ -121,3 +136,5 @@ export default class Alayout extends React.Component {
         )
     }
 }
+Admin = withRouter(Admin)
+export default Admin

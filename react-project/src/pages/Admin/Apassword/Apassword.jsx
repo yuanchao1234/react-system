@@ -17,7 +17,7 @@ export default withRouter(class Spassword extends React.Component {
         if (userID && password) {
             let params = { userID, password };
             params = qs.stringify(params);
-            axios.post("http://localhost:8888/arepass", params).then(function (data) {
+            axios.post("http://localhost:8080/arepass", params).then(function (data) {
                 // console.log(data);
                 if (data.data == 0) {//判断有无号码，如果有，直接结束函数执行
                     message.warning('此号码不存在', 1);

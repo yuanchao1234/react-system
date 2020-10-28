@@ -238,7 +238,7 @@ router.get('/tcourse', async function (req, res, next) {
 });
 
 
-//老师最终得分
+//老师评分后的最终得分
 router.get('/tscore', async function (req, res, next) {
   //解决跨域
   res.append('Access-Control-Allow-Origin', '*');

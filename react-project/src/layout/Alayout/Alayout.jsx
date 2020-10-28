@@ -23,6 +23,9 @@ const { Header, Content, Footer, Sider } = Layout;
 export default withRouter(class Alayout extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            selectedKeys: []
+        }
     }
     componentWillMount() {
         var role = sessionStorage.getItem("role");
@@ -52,6 +55,17 @@ export default withRouter(class Alayout extends React.Component {
             </Menu.Item>
         </Menu>
     );
+    setSelectedKeys = (value) =>{
+        this.setState({
+            selectedKeys: value.keyPath
+        })
+    }
+    componentDidMount() { 
+        let path = this.props.history.location.pathname
+        this.setState({
+            selectedKeys: path
+        })
+    }
     render() {
         return (
             <Router>
@@ -82,18 +96,34 @@ export default withRouter(class Alayout extends React.Component {
                             <Sider width={200} style={{ background: '#fff' }}>
                                 <Menu
                                     mode="inline"
-                                    defaultSelectedKeys={['1']}
-                                    defaultOpenKeys={['sub1']}
                                     style={{ height: '100%' }}
+                                    selectedKeys={this.state.selectedKeys}
+                                    onClick={this.setSelectedKeys}
                                 >
-                                    <Menu.Item key="1"><Link to="/alayout/smessage1">学生信息</Link></Menu.Item>
-                                    <Menu.Item key="2"><Link to="/alayout/smessage2">编辑信息</Link></Menu.Item>
-                                    <Menu.Item key="3"><Link to="/alayout/smessage3">修改密码</Link></Menu.Item>
-                                    <Menu.Item key="5"><Link to="/alayout/didcourse">课程表</Link></Menu.Item>
-                                    <Menu.Item key="6"><Link to="/alayout/selectcourse">选课</Link></Menu.Item>
-                                    <Menu.Item key="7"><Link to="/alayout/didcourse">已选课程</Link></Menu.Item>
-                                    <Menu.Item key="8"><Link to="/alayout/score">成绩查询</Link></Menu.Item>
-                                    <Menu.Item key="9"><Link to="/alayout/scomment">学生评教</Link></Menu.Item>
+                                    <Menu.Item key="/alayout/smessage1">
+                                        <Link to="/alayout/smessage1">学生信息</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/alayout/smessage2">
+                                        <Link to="/alayout/smessage2">编辑信息</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/alayout/smessage3">
+                                        <Link to="/alayout/smessage3">修改密码</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/alayout/didcourse1">
+                                        <Link to="/alayout/didcourse1">课程表</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/alayout/selectcourse">
+                                        <Link to="/alayout/selectcourse">选课</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/alayout/didcourse2">
+                                        <Link to="/alayout/didcourse2">已选课程</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/alayout/score">
+                                        <Link to="/alayout/score">成绩查询</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/alayout/scomment">
+                                        <Link to="/alayout/scomment">学生评教</Link>
+                                    </Menu.Item>
                                     <Menu.Item key="10"></Menu.Item>
                                     <Menu.Item key="11"></Menu.Item>
                                     <Menu.Item key="12"></Menu.Item>
@@ -113,7 +143,10 @@ export default withRouter(class Alayout extends React.Component {
                                     <Route path="/alayout/selectcourse">
                                         <Selectcourse />
                                     </Route>
-                                    <Route path="/alayout/didcourse">
+                                    <Route path="/alayout/didcourse1">
+                                        <Didcourse />
+                                    </Route>
+                                    <Route path="/alayout/didcourse2">
                                         <Didcourse />
                                     </Route>
                                     <Route path="/alayout/score">

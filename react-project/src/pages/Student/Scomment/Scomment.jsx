@@ -21,7 +21,7 @@ export default class Scomment extends React.Component {
     componentDidMount() {
         let _ = this;
         var userID = sessionStorage.getItem("userID");
-        axios.get(`http://localhost:8888/selectcourse?studentID=${userID}`).then(({ data }) => {
+        axios.get(`http://localhost:8080/selectcourse?studentID=${userID}`).then(({ data }) => {
             let arr = data.map(function (item, index) {
                 item.key = `${index + 1}`;
                 return item;

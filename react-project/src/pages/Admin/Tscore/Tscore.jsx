@@ -11,7 +11,7 @@ export default class Tscore extends React.Component {
     }
     componentWillMount() {
         let userID = sessionStorage.getItem("userID");
-        axios.get(`http://localhost:8888/tscore?teacherID=${userID}&panduan=0`).then(({ data }) => {
+        axios.get(`http://localhost:8080/tscore?teacherID=${userID}&panduan=0`).then(({ data }) => {
             this.setState({ data });
         });
     }
@@ -24,7 +24,7 @@ export default class Tscore extends React.Component {
         let shuvalue = this.refs[`shu${index}`].innerHTML
         // console.log(stuID, shuvalue, courseID);
         if (shuvalue) {
-            axios.get(`http://localhost:8888/tpingfeng?courseID=${courseID}&studentID=${stuID}&mark=${shuvalue}`).then(({ data }) => {
+            axios.get(`http://localhost:8080/tpingfeng?courseID=${courseID}&studentID=${stuID}&mark=${shuvalue}`).then(({ data }) => {
                 // this.setState({ data });
                 console.log(data);
                 if (data.affectedRows) {

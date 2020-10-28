@@ -4,6 +4,7 @@ import {
     HashRouter as Router,
     Switch,
     Route,
+    withRouter,
     Link
 } from "react-router-dom";
 import { Dropdown, Button } from 'antd';
@@ -16,9 +17,12 @@ import Tcomment from '../../pages/Teacher/Tcomment/Tcomment';
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
-export default class Alayout extends React.Component {
+class Teacher extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            selectedKeys: []
+        }
     }
     componentWillMount() {
         var role = sessionStorage.getItem("role");
@@ -42,6 +46,17 @@ export default class Alayout extends React.Component {
             </Menu.Item>
         </Menu>
     );
+    setSelectedKeys = (value) => {
+        this.setState({
+            selectedKeys: value.keyPath
+        })
+    }
+    componentDidMount() {
+        let path = this.props.history.location.pathname
+        this.setState({
+            selectedKeys: path
+        })
+    }
     render() {
         return (
             <Router>
@@ -72,17 +87,31 @@ export default class Alayout extends React.Component {
                             <Sider width={200} style={{ background: '#fff' }}>
                                 <Menu
                                     mode="inline"
-                                    defaultSelectedKeys={['1']}
-                                    defaultOpenKeys={['sub1']}
                                     style={{ height: '100%' }}
+                                    selectedKeys={this.state.selectedKeys}
+                                    onClick={this.setSelectedKeys}
                                 >
-                                    <Menu.Item key="1"><Link to="/teacher/tmessage1">教师信息</Link></Menu.Item>
-                                    <Menu.Item key="2"><Link to="/teacher/tmessage2">编辑信息</Link></Menu.Item>
-                                    <Menu.Item key="3"><Link to="/teacher/tmessage3">修改密码</Link></Menu.Item>
-                                    <Menu.Item key="5"><Link to="/teacher/didcourse">课程表</Link></Menu.Item>
-                                    <Menu.Item key="6"><Link to="/teacher/tscore">评分</Link></Menu.Item>
-                                    <Menu.Item key="7"><Link to="/teacher/endtscore">最终评分</Link></Menu.Item>
-                                    <Menu.Item key="9"><Link to="/teacher/tcomment">学生评价</Link></Menu.Item>
+                                    <Menu.Item key="/teacher/tmessage1">
+                                        <Link to="/teacher/tmessage1">教师信息</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/teacher/tmessage2">
+                                        <Link to="/teacher/tmessage2">编辑信息</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/teacher/tmessage3">
+                                        <Link to="/teacher/tmessage3">修改密码</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/teacher/didcourse">
+                                        <Link to="/teacher/didcourse">课程表</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/teacher/tscore">
+                                        <Link to="/teacher/tscore">评分</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/teacher/endtscore">
+                                        <Link to="/teacher/endtscore">最终评分</Link>
+                                    </Menu.Item>
+                                    <Menu.Item key="/teacher/tcomment">
+                                        <Link to="/teacher/tcomment">学生评价</Link>
+                                    </Menu.Item>
                                     <Menu.Item key="10"></Menu.Item>
                                     <Menu.Item key="11"></Menu.Item>
                                     <Menu.Item key="12"></Menu.Item>
@@ -121,3 +150,5 @@ export default class Alayout extends React.Component {
         )
     }
 }
+Teacher = withRouter(Teacher)
+export default Teacher

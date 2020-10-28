@@ -57,7 +57,7 @@ export default class Selectcourse extends React.Component {
         columns.forEach((item, index) => {
             item.align = 'center'
         })
-        axios.get(`http://localhost:8888/course`).then(({ data }) => {
+        axios.get(`http://localhost:8080/course`).then(({ data }) => {
             let arr = data.map(function (item, index) {
                 item.key = `${index + 1}`;
                 return item;
@@ -71,7 +71,7 @@ export default class Selectcourse extends React.Component {
                 let courseID = this.state.courseID;
                 let userID = sessionStorage.getItem("userID");
                 let mark = 0;
-                axios.get(`http://localhost:8888/insertcourse?courseID=${courseID}&userID=${userID}&mark=${mark}&yuan=1`).then(({ data }) => {
+                axios.get(`http://localhost:8080/insertcourse?courseID=${courseID}&userID=${userID}&mark=${mark}&yuan=1`).then(({ data }) => {
                     if (data.affectedRows) {
                         message.success('选课成功');
                     }
@@ -88,7 +88,7 @@ export default class Selectcourse extends React.Component {
             this.setState({ pan2: true });
             let courseID = selectedRows[0].courseID;
             let userID = sessionStorage.getItem("userID");
-            axios.get(`http://localhost:8888/insertcourse?courseID=${courseID}&userID=${userID}&yuan=0`).then(({ data }) => {
+            axios.get(`http://localhost:8080/insertcourse?courseID=${courseID}&userID=${userID}&yuan=0`).then(({ data }) => {
                 if (data.length == 0) {//如果可以查得到数据，则是pan变true
                     this.state.pan = true;
                     this.setState({ courseID });

@@ -24,7 +24,7 @@ export default withRouter(class Spassword extends React.Component {
         let role = sessionStorage.getItem("role");
         let params = { userID, password, role };
         params = qs.stringify(params);
-        axios.post("http://localhost:8888/login", params).then(function (data) {
+        axios.post("http://localhost:8080/login", params).then(function (data) {
             if (data.data.length) {
                 _.setState({ pan: true });
             } else {
@@ -51,7 +51,7 @@ export default withRouter(class Spassword extends React.Component {
             let role = sessionStorage.getItem("role");
             let params = { userID, password, role };
             params = qs.stringify(params);
-            axios.post("http://localhost:8888/repass", params).then(function (data) {
+            axios.post("http://localhost:8080/repass", params).then(function (data) {
                 if (data.data.affectedRows) {
                     _.props.history.push('/ssuccess')
                 } else {

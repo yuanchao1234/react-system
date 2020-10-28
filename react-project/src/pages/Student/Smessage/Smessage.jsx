@@ -11,7 +11,7 @@ export default class Smessage extends React.Component {
     }
     componentWillMount() {
         let userID = sessionStorage.getItem("userID");
-        axios.get(`http://localhost:8888/smessage?userID=${userID}`).then(({ data }) => {
+        axios.get(`http://localhost:8080/smessage?userID=${userID}`).then(({ data }) => {
             console.log(data);
             this.setState({ data: data[0] });
         });

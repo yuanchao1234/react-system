@@ -33,7 +33,7 @@ export default class Sacomment extends React.Component {
         var studentID = sessionStorage.getItem("userID");
         var teacherID = sessionStorage.getItem("teacherID");
         let _ = this;
-        axios.get(`http://localhost:8888/scomment?studentID=${studentID}&teacherID=${teacherID}&id=2`).then(({ data }) => {
+        axios.get(`http://localhost:8080/scomment?studentID=${studentID}&teacherID=${teacherID}&id=2`).then(({ data }) => {
             console.log(data);
             _.setState({ data });
         });
@@ -44,7 +44,7 @@ export default class Sacomment extends React.Component {
             var studentID = sessionStorage.getItem("userID");
             var teacherID = sessionStorage.getItem("teacherID");
             let _ = this;
-            axios.get(`http://localhost:8888/scomment?studentID=${studentID}&teacherID=${teacherID}&text=${text}&id=1`).then(({ data }) => {
+            axios.get(`http://localhost:8080/scomment?studentID=${studentID}&teacherID=${teacherID}&text=${text}&id=1`).then(({ data }) => {
                 if (data.affectedRows) {
                     _.componentWillMount();
                 } else {

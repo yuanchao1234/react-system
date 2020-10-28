@@ -20,13 +20,13 @@ export default class Tmessage extends React.Component {
         this.data2 = [];
         let y = this.refs.i1.input.value.trim();
         if (y) {
-            axios.get(`http://localhost:8888/atm?userID=${y}`).then(({ data }) => {
+            axios.get(`http://localhost:8080/atm?userID=${y}`).then(({ data }) => {
                 if (data == 0) {
                     message.warning('此工号不存在');
                     return;
                 }
                 if (data.length) {
-                    console.log(data);
+                    // console.log(data);
 
                     this.setState({ data });//将后端传上来的数据传到私有的数据
                 }
@@ -43,24 +43,22 @@ export default class Tmessage extends React.Component {
         if (arr.length) {
             //基本信息
             let index1 = 0;
-            let arrtitle1 = ['学号：', '性别：', '出生年份：', '学历：', '级别：', '入职年份：', '学院：', '姓名：'];
+            let arrtitle1 = ['姓名：', '学号：', '性别：', '出生年份：', '学历：', '级别：', '入职年份：', '学院：'];
             delete arr[0].url;//删除属性以及属性值
             for (let i in arr[0]) {//将数据push到data1中
                 this.data1.push(arrtitle1[index1] + arr[0][i]);
                 index1++;
             }
-            this.data1.unshift(this.data1[7]);
-            this.data1.pop();
-
-
-            //课程信息
-            delete arr[1].teacherID;//将对象的teacherID属性删掉
-            delete arr[1].userName;//将对象的userName属性删掉
-            let index2 = 0;
-            let arrtitle2 = ['课程号：', '科目：', '上课时间：', '地点：', '上课周数：', '类型：', '学分：', '姓名：'];
-            for (let i in arr[1]) {
-                this.data2.push(arrtitle2[index2] + arr[1][i]);
-                index2++;
+            if (arr.length == 2) { 
+                //课程信息
+                delete arr[1].teacherID;//将对象的teacherID属性删掉
+                delete arr[1].userName;//将对象的userName属性删掉
+                let index2 = 0;
+                let arrtitle2 = ['课程号：', '科目：', '上课时间：', '地点：', '上课周数：', '类型：', '学分：', '姓名：'];
+                for (let i in arr[1]) {
+                    this.data2.push(arrtitle2[index2] + arr[1][i]);
+                    index2++;
+                }
             }
 
             return (
