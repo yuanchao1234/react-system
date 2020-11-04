@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Input, Button, message } from 'antd';
 import { List, Typography } from 'antd';
 import { Divider, Table } from 'antd';
-import './Atm.css';
+import './Stm.scss';
 
 const columns = [
     {
@@ -120,7 +120,7 @@ export default class Tmessage extends React.Component {
             this.data2 = karr;
 
             return (
-                <div className="asm">
+                <div className="stm">
                     <Divider><h3>查看学生信息</h3></Divider>
                     <div className="d1 clearfix">
                         <Input allowClear placeholder="请输入学号" ref="i1" />

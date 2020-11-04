@@ -124,7 +124,7 @@ class Menu extends WeElement {
             null,
             "\u6280\u672F\u652F\u6301\uFF1A\u6842\u6797\u7535\u5B50\u79D1\u6280\u5927\u5B66\u8BA1\u7B97\u673A\u5DE5\u7A0B\u5B66\u9662\u2014\u2014\u8881\u8D85"
           ),
-          h("p", null, "\u6307\u5BFC\u8001\u5E08\uFF1A\u8001\u8C22")
+          h("p", null, "\u6307\u5BFC\u8001\u5E08\uFF1A\u6F58\u745E\u8FDC")
         )
       )
     );

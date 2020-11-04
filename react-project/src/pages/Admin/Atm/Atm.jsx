@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { Input, Button, message } from 'antd';
-import { List, Typography } from 'antd';
+import { List, Typography, Table } from 'antd';
 import { Divider } from 'antd';
-import './Atm.css';
+import './Atm.scss';
 
 export default class Tmessage extends React.Component {
     constructor(props) {
@@ -26,8 +26,6 @@ export default class Tmessage extends React.Component {
                     return;
                 }
                 if (data.length) {
-                    // console.log(data);
-
                     this.setState({ data });//将后端传上来的数据传到私有的数据
                 }
             });
@@ -37,9 +35,8 @@ export default class Tmessage extends React.Component {
     }
 
     render() {
-        //获取私有的数据
+        // 获取私有的数据
         let arr = this.state.data;
-
         if (arr.length) {
             //基本信息
             let index1 = 0;
@@ -49,18 +46,54 @@ export default class Tmessage extends React.Component {
                 this.data1.push(arrtitle1[index1] + arr[0][i]);
                 index1++;
             }
-            if (arr.length == 2) { 
-                //课程信息
-                delete arr[1].teacherID;//将对象的teacherID属性删掉
-                delete arr[1].userName;//将对象的userName属性删掉
-                let index2 = 0;
-                let arrtitle2 = ['课程号：', '科目：', '上课时间：', '地点：', '上课周数：', '类型：', '学分：', '姓名：'];
-                for (let i in arr[1]) {
-                    this.data2.push(arrtitle2[index2] + arr[1][i]);
-                    index2++;
+            // 课程信息
+            // 表头
+            const columns = [
+                {
+                    title: '课程号',
+                    dataIndex: 'courseID',
+                    key: 'courseID',
+                    align: 'center'
+                },
+                {
+                    title: '科目',
+                    dataIndex: 'courseName',
+                    key: 'courseName',
+                    align: 'center'
+                },
+                {
+                    title: '上课时间',
+                    dataIndex: 'courseTime',
+                    key: 'courseTime',
+                    align: 'center'
+                },
+                {
+                    title: '上课地点',
+                    dataIndex: 'classRoom',
+                    key: 'classRoom',
+                    align: 'center'
+                },
+                {
+                    title: '周数',
+                    dataIndex: 'courseWeek',
+                    key: 'courseWeek',
+                    align: 'center'
+                },
+                {
+                    title: '类型',
+                    dataIndex: 'courseType',
+                    key: 'courseType',
+                    align: 'center'
+                },
+                {
+                    title: '学分',
+                    dataIndex: 'score',
+                    key: 'score',
+                    align: 'center'
                 }
-            }
-
+            ];
+            // 表的数据
+            const dataSource = arr.slice(1);
             return (
                 <div className="atm">
                     <Divider><h3>查看教师信息</h3></Divider>
@@ -68,7 +101,7 @@ export default class Tmessage extends React.Component {
                         <Input allowClear placeholder="请输入工号" ref="i1" />
                         <Button type="primary" onClick={this.add.bind(this)}>查找</Button>
                     </div>
-                    <div className="d2 fl">
+                    <div className="d2">
                         <List
                             size="small"
                             header={<div className="title">基本信息</div>}
@@ -77,14 +110,9 @@ export default class Tmessage extends React.Component {
                             renderItem={item => <List.Item>{item}</List.Item>}
                         />
                     </div>
-                    <div className="d2 fl">
-                        <List
-                            size="small"
-                            header={<div className="title">课程信息</div>}
-                            bordered
-                            dataSource={this.data2 ? this.data2 : ''}
-                            renderItem={item => <List.Item>{item}</List.Item>}
-                        />
+                    <div className="d3">
+                        <h3 className="h3">课程信息</h3>
+                        <Table size="small" bordered="true" columns={columns} dataSource={dataSource} />
                     </div>
                 </div>
             )
