@@ -153,7 +153,7 @@ export default withRouter(
             } else if (role == 2) {
               _.props.history.push("/teacher/tmessage1");
             } else if (role == 3) {
-              _.props.history.push("/admin/addstudent");
+              _.props.history.push("/admin/distribution");
             }
           } else {
             message.error("账号或密码错误", 3);

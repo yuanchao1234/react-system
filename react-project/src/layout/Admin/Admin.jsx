@@ -14,7 +14,9 @@ import Apassword from '../../pages/Admin/Apassword/Apassword';
 import Atm from '../../pages/Admin/Atm/Atm';
 import Stm from '../../pages/Admin/Stm/Stm';
 import Addcourse from '../../pages/Admin/Addcourse/Addcourse';
-const { SubMenu } = Menu;
+import DelSt from '../../pages/Admin/DelSt/DelSt';
+import DelTt from '../../pages/Admin/DelTt/DelTt';
+import Distribution from '../../pages/Admin/Distribution/Distribution';
 const { Header, Content, Footer, Sider } = Layout;
 class Admin extends React.Component {
     constructor(props) {
@@ -93,21 +95,24 @@ class Admin extends React.Component {
                                     selectedKeys={this.state.selectedKeys}
                                     onClick={this.setSelectedKeys}
                                 >
+                                    <Menu.Item key="/admin/distribution"><Link to="/admin/distribution">师生分布</Link></Menu.Item>
                                     <Menu.Item key="/admin/addstudent"><Link to="/admin/addstudent">添加学生</Link></Menu.Item>
                                     <Menu.Item key="/admin/addteacher"><Link to="/admin/addteacher">添加教工</Link></Menu.Item>
                                     <Menu.Item key="/admin/addcourse"><Link to="/admin/addcourse">给教师添加课程</Link></Menu.Item>
                                     <Menu.Item key="/admin/apassword"><Link to="/admin/apassword">修改密码</Link></Menu.Item>
                                     <Menu.Item key="/admin/atm"><Link to="/admin/atm">教师信息</Link></Menu.Item>
                                     <Menu.Item key="/admin/stm"><Link to="/admin/stm">学生信息</Link></Menu.Item>
-                                    <Menu.Item key="/admin/score"><Link to="/admin/score">成绩查询</Link></Menu.Item>
-                                    <Menu.Item key="9"></Menu.Item>
-                                    <Menu.Item key="10"></Menu.Item>
+                                    <Menu.Item key="/admin/delst"><Link to="/admin/delst">删除学生</Link></Menu.Item>
+                                    <Menu.Item key="/admin/deltt"><Link to="/admin/deltt">删除教工</Link></Menu.Item>
                                     <Menu.Item key="11"></Menu.Item>
                                     <Menu.Item key="12"></Menu.Item>
                                 </Menu>
                             </Sider>
                             <Content style={{ padding: '0 24px', minHeight: 280 }}>
                                 <Switch>
+                                    <Route path="/admin/distribution">
+                                        <Distribution />
+                                    </Route>
                                     <Route path="/admin/addstudent">
                                         <Addstudent />
                                     </Route>
@@ -125,6 +130,12 @@ class Admin extends React.Component {
                                     </Route>
                                     <Route path="/admin/addcourse">
                                         <Addcourse />
+                                    </Route>
+                                    <Route path="/admin/delst">
+                                        <DelSt />
+                                    </Route>
+                                    <Route path="/admin/deltt">
+                                        <DelTt />
                                     </Route>
                                 </Switch>
                             </Content>

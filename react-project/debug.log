@@ -3,3 +3,7 @@
 [1016/204721.229:ERROR:directory_reader_win.cc(43)] FindFirstFile: 系统找不到指定的路径。 (0x3)
 [1026/182035.385:ERROR:directory_reader_win.cc(43)] FindFirstFile: 系统找不到指定的路径。 (0x3)
 [1028/204604.429:ERROR:directory_reader_win.cc(43)] FindFirstFile: 系统找不到指定的路径。 (0x3)
+[1030/092343.883:ERROR:directory_reader_win.cc(43)] FindFirstFile: 系统找不到指定的路径。 (0x3)
+[1030/144347.441:ERROR:process_info.cc(359)] UncheckedAllocate
+[1030/162431.726:ERROR:process_info.cc(359)] UncheckedAllocate
+[1030/211104.466:ERROR:directory_reader_win.cc(43)] FindFirstFile: 系统找不到指定的路径。 (0x3)
