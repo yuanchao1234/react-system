@@ -10,22 +10,22 @@ export default class DelTt extends React.Component {
     }
   }
   confirm = async () => {
-    // if (!this.state.value) {
-    //   message.warning("请输入学号")
-    // } else if (this.state.value[0] === 'T' || this.state.value[0] === 'a') {
-    //   message.warning("请输入正确的格式")
-    // } else {
-    //   let { data } = await axios.get("http://localhost:8080/DelTt", {
-    //     params: {
-    //       studentID: this.state.value
-    //     }
-    //   })
-    //   if (data * 1) {
-    //     message.success("删除成功");
-    //   } else {
-    //     message.error("用户不存在");
-    //   }
-    // }
+    if (!this.state.value) {
+      message.warning("请输入工号")
+    } else if (this.state.value[0] === 'T') {
+      let { data } = await axios.get("http://localhost:8080/DelTt", {
+        params: {
+          teacherID: this.state.value
+        }
+      })
+      if (data * 1) {
+        message.success("删除成功");
+      } else {
+        message.error("用户不存在");
+      }
+    } else {
+      message.warning("请输入正确的格式")
+    }
   }
   change = (ev) => {
     this.setState({

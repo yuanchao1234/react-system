@@ -131,6 +131,18 @@ export default withRouter(
       }
     }
 
+    keyDown = (e) => {
+      if (e.keyCode === 13) {
+        this.login()
+      }
+    }
+    componentDidMount() {
+      document.addEventListener("keydown", this.keyDown)
+    }
+    componentWillUnmount() {
+      document.removeEventListener("keydown", this.keyDown)
+    }
+
     login() {
       let _ = this;
 

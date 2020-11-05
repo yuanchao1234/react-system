@@ -91,7 +91,17 @@ export default class Tmessage extends React.Component {
             message.warning('请输入内容', 1);
         }
     }
-
+    keyDown = (e) => {
+        if (e.keyCode === 13) {
+            this.add()
+        }
+    }
+    componentDidMount() {
+        document.addEventListener("keydown", this.keyDown)
+    }
+    componentWillUnmount() {
+        document.removeEventListener("keydown", this.keyDown)
+    }
     render() {
         //获取私有的数据
         let arr = this.state.data;

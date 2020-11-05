@@ -58,9 +58,7 @@ export default class Distribution extends React.Component {
         <Divider>
           <h3>师生分布</h3>
         </Divider>
-        <div className="dtbt" ref="dtbt">
-123
-        </div>
+        <div className="dtbt" ref="dtbt"></div>
       </div>
     );
   }
