@@ -37,8 +37,8 @@ export default class Distribution extends React.Component {
           center: ['50%', '50%'],
           selectedMode: 'single',
           data: [
-            { value: data[0].length, name: '学生' },
-            { value: data[1].length, name: '老师' }
+            { value: data[0], name: '学生' },
+            { value: data[1], name: '老师' }
           ],
           emphasis: {
             itemStyle: {
