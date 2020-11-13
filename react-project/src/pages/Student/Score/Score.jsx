@@ -65,7 +65,7 @@ export default class Didcourse extends React.Component {
 
             return (
                 <div className="score">
-                    <Divider><h3>已选课程</h3></Divider>
+                    <Divider><h3>成绩查询</h3></Divider>
                     <Table pagination={this.state.pagination} bordered="true" columns={columns} dataSource={this.data} />
                 </div>)
         } else {

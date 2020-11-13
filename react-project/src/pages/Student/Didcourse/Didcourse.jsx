@@ -73,7 +73,7 @@ export default class Didcourse extends React.Component {
         if (arr) {
             this.data = arr;
             return <>
-                <Divider><h3>已选课程</h3></Divider>
+                <Divider><h3>课程表</h3></Divider>
                 <Table pagination={this.state.pagination} bordered="true" columns={columns} dataSource={this.data} />
             </>;
             {/*<table>
