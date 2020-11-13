@@ -18,7 +18,7 @@ export default class DelTt extends React.Component {
           teacherID: this.state.value
         }
       })
-      if (data * 1) {
+      if (data.affectedRows * 1) {
         message.success("删除成功");
       } else {
         message.error("用户不存在");

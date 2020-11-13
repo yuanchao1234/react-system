@@ -20,9 +20,9 @@ export default class Tscore extends React.Component {
         let score = this.refs.i8.input.value;
         if (userName && teacherID && courseName && courseTime && classRoom && courseWeek && courseType && score) {
             axios.get(`http://localhost:8080/acourse?userName=${userName}&teacherID=${teacherID}&courseName=${courseName}&courseTime=${courseTime}&classRoom=${classRoom}&courseWeek=${courseWeek}&courseType=${courseType}&score=${score}`).then(({ data }) => {
-                if (data * 1 ===1) {
+                if (data.affectedRows * 1 ===1) {
                     message.success('添加成功');
-                } else if (data * 1 === 2) { 
+                } else if (data.affectedRows * 1 === 2) { 
                     message.warning('该老师此课程已存在');
                 } else {
                     message.warning('添加失败，工号不存在');

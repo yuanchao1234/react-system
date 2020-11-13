@@ -21,10 +21,10 @@ export default class addstudent extends React.Component {
         let college = this.refs.i8.input.value.trim();
         // console.log(userName, userID, sex, degree, title, birthyear, grade, college);
         axios.get(`http://localhost:8080/agonghao?userName=${userName}&userID=${userID}&sex=${sex}&degree=${degree}&title=${title}&birthyear=${birthyear}&grade=${grade}&college=${college}`).then(({ data }) => {
-            if (data * 1) {
-                message.warning('此工号已存在');
-            } else {
+            if (data.affectedRows * 1) {
                 message.success('添加成功');
+            } else {
+                message.warning('此工号已存在');
             }
         });
     }
